@@ -17,10 +17,13 @@
 <ul>
   <% @cocktails.each do |cocktail| %>
     <li>
-      <h3><%= cocktail.name %></h3>
+      <h3><%= cocktail.name %> - <%= link_to 'Add a dose', new_cocktail_dose_path(cocktail) %></h3>
       <ul>
         <% cocktail.doses.each do |dose| %>
-          <li><%= dose.description %> - <%= dose.ingredient.name %></li>
+          <li>
+            <%= dose.description %> - <%= dose.ingredient.name %>
+            <%= link_to 'Delete dose', dose_path(dose), method: :delete %>
+          </li>
         <% end %>
       </ul>
     </li>
